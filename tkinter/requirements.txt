@@ -1,0 +1,10 @@
+click
+Flask
+requests
+python-dotenv
+itsdangerous
+Jinja2
+MarkupSafe
+Werkzeug
+Pillow
+tk
