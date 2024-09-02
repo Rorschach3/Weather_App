@@ -1,3 +1,4 @@
+blinker
 click
 Flask
 requests
