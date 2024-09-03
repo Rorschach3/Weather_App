@@ -16,6 +16,7 @@ load_dotenv()
 OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
 
 
+# Route the index.html file to the root URL
 @app.route('/', methods=['POST', 'GET'])
 def weather():
     city_name = None
@@ -60,6 +61,11 @@ def weather():
         return abort(
             404, description="City not found or error fetching weather data.")
 
+@app.route('/info', methods=['GET'])
+def info():
+    info_text = """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
+Our Product Manager Accelerator community are ambitious and committed. Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours."""
+    return render_template('info.html', info_text=info_text)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Menu, Canvas, PhotoImage, Label, Frame, Entry, Button, messagebox
+from tkinter import Menu, Canvas, PhotoImage, Label, Frame, Entry, Button
 import requests
 import os
 import threading
@@ -49,26 +49,16 @@ def start_thread():
     threading.Thread(target=lambda: weather(entry.get())).start()
 
 
-# def show_info():
-#     info_message = (
-#         """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career.
-#         From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.\n\n
-#         Our Product Manager Accelerator community is ambitious and committed. Through our program, they have learned, honed, and developed new PM and leadership skills, giving them a strong foundation for their future endeavors."""
-#     )
-#     messagebox.showinfo("Info", info_message)
-
-
 # Function to toggle additional info text
 def toggle_info_text():
     if info_label['text']:
         info_label['text'] = ''
     else:
         info_label['text'] = (
-            """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. 
-        From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
-
-        Our Product Manager Accelerator community are ambitious and committed.
-        Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours."""
+            "The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. "
+            "From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.\n\n"
+            "Our Product Manager Accelerator community is ambitious and committed. "
+            "Through our program, they have learned, honed, and developed new PM and leadership skills, giving them a strong foundation for their future endeavors."
         )
 
 
@@ -82,7 +72,7 @@ root.configure(background="black")
 m = Menu(root)
 menubar = Menu(m, tearoff=0)
 menubar.add_command(label="Home")
-menubar.add_command(label="Info", command=show_info)
+menubar.add_command(label="Info", command=toggle_info_text)
 menubar.add_command(label="Exit", command=root.destroy)
 
 root.config(menu=menubar)
@@ -91,7 +81,7 @@ root.config(menu=menubar)
 canvas = Canvas(root, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
-# background image
+# background image 
 background_img = PhotoImage(file=os.path.join(os.path.dirname(__file__), "pic.png"))
 Label(root, image=background_img).place(relx=0, rely=0, relwidth=1, relheight=1)
 
@@ -109,9 +99,6 @@ lower_frame.place(relx=0.5, rely=0.3, relwidth=0.75, relheight=0.65, anchor="n")
 
 show = Label(lower_frame, bg="#f2f2f2", font=20)
 show.place(relx=0, rely=0, relwidth=1, relheight=1)
-
-# Add a button to show/hide additional info
-Button(root, text="More Info", font=20, bd=0, bg="#f2f2f2", command=toggle_info_text).place(relx=0.5, rely=0.9, anchor="s")
 
 # Label to display the additional info text
 info_label = Label(root, bg="black", fg="white", font=20)

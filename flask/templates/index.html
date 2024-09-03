@@ -2,12 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #info-text {
+            display: none; /* Initially hide the info text */
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+    </style>
 </head>
 <body>
-    <div class="container" style="margin:auto;">
-        <nav class="row" style="background: #04dcbf; color: rgb(255, 255, 255);">
+    <div class="container" style="margin:auto;padding:1%;">
+        <nav class="row" style="background: #28c6a1; color: rgb(255, 255, 255);">
             <div class="text-center">
                 <h1 class="text-center" style="font-weight:bold;">Weather App</h1>
             </div>
@@ -26,8 +37,18 @@
                     </div>
                     <h3>Current City: {{ city_name }}</h3>
                 </form>
+                <!-- Button to display info -->
+                    <button class="btn-info btn-group-lg" id="info-button">More info</button>
+                </form>
+                    <!-- Hidden div for info text -->
+                    <div id="info-text">
+                        <h5>About PM Accelerator: </h5>
+                        <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.</p>
+                        <p>Our Product Manager Accelerator community are ambitious and committed. Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours.</p>
+                    </div>
             </div>
         </div>
+        <br>
 
         {% if forecast_data %}
             <div class="row">
@@ -51,5 +72,16 @@
         {% endif %}
 
     </div>
+    <!-- show/hide the info text -->
+    <script>
+        document.getElementById("info-button").onclick = function() {
+            var infoText = document.getElementById("info-text");
+            if (infoText.style.display === "none") {
+                infoText.style.display = "block";
+            } else {
+                infoText.style.display = "none";
+            }
+        };
+    </script>
 </body>
 </html>
