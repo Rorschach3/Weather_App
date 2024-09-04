@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         #info-text {
-            display: none; /* Initially hide the info text */
+            display: none;
             margin-top: 20px;
             padding: 10px;
             background-color: #f9f9f9;
@@ -38,10 +38,8 @@
                     </div>
                     <h3>Current City: {{ city_name }}</h3>
                 </form>
-                <!-- Button to display info -->
                     <button class="btn-info btn-group-lg" id="info-button">More info</button>
                 </form>
-                    <!-- Hidden div for info text -->
                     <div id="info-text">
                         <h5>About PM Accelerator: </h5>
                         <p>The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.</p>
@@ -77,7 +75,6 @@
         </div>
 
     </div>
-    <!-- show/hide the info text -->
     <script>
         document.getElementById("info-button").onclick = function() {
             var infoText = document.getElementById("info-text");

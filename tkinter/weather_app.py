@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Menu, Canvas, PhotoImage, Label, Frame, Entry, Button, messagebox
+from tkinter import Menu, Canvas, PhotoImage, Label, Frame, Entry, Button
 import requests
 import os
 import threading
@@ -11,7 +11,7 @@ load_dotenv()
 # Retrieve the API key from the environment variables
 OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
 
-HEIGHT = 1000
+HEIGHT = 900
 WIDTH = 800
 
 
@@ -30,14 +30,14 @@ def weather(city):
         forecast_text = ""
         for i, forecast in enumerate(forecasts):
             a = f"Day {i+1}:\n"
-            b = "Weather: " + forecast['weather'][0]['description'] + '\n'
-            c = "Temperature: " + str(forecast['main']['temp']) + '°F\n'
+            b = "Temperature: " + str(forecast['main']['temp']) + '°F\n'
+            c = "Weather: " + forecast['weather'][0]['description'] + '\n'
             d = "Feels Like: " + str(forecast['main']['feels_like']) + '°F\n'
             e = "Low: " + str(forecast['main']['temp_min']) + '°F\n'
             f = "High: " + str(forecast['main']['temp_max']) + '°F\n'
             g = "Humidity: " + str(forecast['main']['humidity']) + '%\n'
 
-            forecast_text += a + b + c + d + e + f + g + "\n\n"
+            forecast_text += a + b + c + d + e + f + g + "\n"
 
         show['text'] = forecast_text
     except Exception as e:
@@ -49,26 +49,13 @@ def start_thread():
     threading.Thread(target=lambda: weather(entry.get())).start()
 
 
-# def show_info():
-#     info_message = (
-#         """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career.
-#         From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.\n\n
-#         Our Product Manager Accelerator community is ambitious and committed. Through our program, they have learned, honed, and developed new PM and leadership skills, giving them a strong foundation for their future endeavors."""
-#     )
-#     messagebox.showinfo("Info", info_message)
-
-
 # Function to toggle additional info text
 def toggle_info_text():
     if info_label['text']:
         info_label['text'] = ''
     else:
         info_label['text'] = (
-            """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. 
-        From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
-
-        Our Product Manager Accelerator community are ambitious and committed.
-        Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours."""
+            "More Info:\nThe Product Manager Accelerator Program is designed to support PM professionals through every stage of their career.\nFrom students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.\nOur Product Manager Accelerator community is ambitious and committed.\nThrough our program, they have learned, honed, and developed new PM and leadership skills, giving them a strong foundation for their future endeavors."
         )
 
 
@@ -76,13 +63,12 @@ root = tk.Tk()
 
 # Title of the app
 root.title("Weather App")
-root.configure(background="black")
+root.configure(background="blue")
 
 # Menu bar setup
 m = Menu(root)
 menubar = Menu(m, tearoff=0)
-menubar.add_command(label="Home")
-menubar.add_command(label="Info", command=show_info)
+menubar.add_command(label="Info", command=toggle_info_text)
 menubar.add_command(label="Exit", command=root.destroy)
 
 root.config(menu=menubar)
@@ -91,31 +77,34 @@ root.config(menu=menubar)
 canvas = Canvas(root, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
-# background image
+# background image 
 background_img = PhotoImage(file=os.path.join(os.path.dirname(__file__), "pic.png"))
 Label(root, image=background_img).place(relx=0, rely=0, relwidth=1, relheight=1)
+
+# Label to display the text "Daniel Hernandez"
+Label(root, text="Made by: Daniel Hernandez", font=('Helvetica', 16,'bold'),fg='black').place(relx=0.5, rely=0.02, anchor="n")
 
 upper_frame = Frame(root, bg='gray')
 upper_frame.place(relx=0.5, rely=0.1, relwidth=0.75, relheight=0.1, anchor="n")
 
-entry = Entry(upper_frame, bg="white", bd=0)
+entry = Entry(upper_frame, bg="white", font=40, bd=0)
 entry.place(relx=0, rely=0, relwidth=0.7, relheight=1)
 
 # Search button
-Button(upper_frame, text="Search", font=20, bd=0, bg="#f2f2f2", command=start_thread).place(relx=0.7, rely=0, relwidth=0.30, relheight=1)
+Button(upper_frame, text="Search", font=12, bd=0, bg="gray", command=start_thread).place(relx=0.70, rely=0, relwidth=0.30, relheight=1)
+
+# Label to display "Enter City and click Search"
+Label(root, text="Enter City and click Search", font=('Helvetica', 20, 'bold'), fg='black').place(relx=0.5, rely=0.22, anchor="n")
 
 lower_frame = Frame(root, bg="black", bd=3)
 lower_frame.place(relx=0.5, rely=0.3, relwidth=0.75, relheight=0.65, anchor="n")
 
-show = Label(lower_frame, bg="#f2f2f2", font=20)
+show = Label(lower_frame, bg="white", font=8)
 show.place(relx=0, rely=0, relwidth=1, relheight=1)
 
-# Add a button to show/hide additional info
-Button(root, text="More Info", font=20, bd=0, bg="#f2f2f2", command=toggle_info_text).place(relx=0.5, rely=0.9, anchor="s")
-
 # Label to display the additional info text
-info_label = Label(root, bg="black", fg="white", font=20)
-info_label.place(relx=0.5, rely=0.85, relwidth=0.75, relheight=0.1, anchor="n")
+info_label = Label(root, bg="black", fg="white", font=6)
+info_label.place(relx=0.5, rely=0.85, relwidth=1, relheight=0.2, anchor="n")
 
 if __name__ == "__main__":
     root.mainloop()

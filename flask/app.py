@@ -2,17 +2,15 @@ import requests
 import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, abort
-import json
-import urllib.request
 import datetime
 
 
 app = Flask(__name__)
 
-# Load environment variables from .env file
+# Load environment variables 
 load_dotenv()
 
-# Retrieve the API key from the environment variables
+# Retrieve the API 
 OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
 
 
@@ -36,10 +34,11 @@ def weather():
         forecast_data = []
         current_date = datetime.datetime.now()
 
-        # forecast for each day (3-hour intervals)
+        # forecast for each day
         for i in range(0, 40, 8):  
             weather_data = data["list"][i]
-
+            
+            # iterate through the next 5 days
             weather_forecast = {
                 "date": current_date.strftime('%A, %B %d'),
                 "temp": "{0:,.2f}".format(weather_data["main"]["temp"]),
@@ -57,15 +56,10 @@ def weather():
         return render_template(
             'index.html', forecast_data=forecast_data, city_name=city_name)
     else:
-        # city is not found or error with the API request
+        # city not found or error with API
         return abort(
             404, description="City not found or error fetching weather data.")
 
-@app.route('/info', methods=['GET'])
-def info():
-    info_text = """The Product Manager Accelerator Program is designed to support PM professionals through every stage of their career. From students looking for entry-level jobs to Directors looking to take on a leadership role, our program has helped over hundreds of students fulfill their career aspirations.
-Our Product Manager Accelerator community are ambitious and committed. Through our program they have learnt, honed and developed new PM and leadership skills, giving them a strong foundation for their future endeavours."""
-    return render_template('info.html', info_text=info_text)
 
 if __name__ == '__main__':
     app.run(debug=True)
