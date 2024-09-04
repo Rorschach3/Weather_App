@@ -1,0 +1,11 @@
+datetime
+Flask
+requests
+python-dotenv
+itsdangerous
+Jinja2
+load_dotenv
+MarkupSafe
+Werkzeug
+tk
+gunicorn
