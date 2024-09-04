@@ -8,3 +8,4 @@ load_dotenv
 MarkupSafe
 Werkzeug
 tk
+gunicorn
