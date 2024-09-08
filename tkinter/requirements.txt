@@ -8,4 +8,5 @@ load_dotenv
 MarkupSafe
 Werkzeug
 tk
+ttkbootstrap
 gunicorn

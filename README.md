@@ -11,8 +11,28 @@ This app uses OpenWeatherMap.org for retrieving real-time weather data based on 
 
 Choose to either run the app using Flask or Tkinter. The user enters a city, and the app retrieves weather data using OpenWeatherMap's APIs. The information returned includes temperature, "feels like" temperature, high and low temperatures, and humidity. The Tkinter app retrieves a 3-day weather forecast, while the Flask app retrieves a 5-day weather forecast.
 
-On the info button there is a short description of PM Accelerator, you can find more info on PM Accelerator on its Linkedin page [here](https://www.linkedin.com/school/productmanagerinterview/about/)
-## To Run The App Locally
+On the info button there is a short description of PM Accelerator, you can find more info on PM Accelerator on its Linkedin page:
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/school/productmanagerinterview/about/)
+*********
+
+#### Instructions: 
+
+What We’re Looking For:
+
+Make a weather app that:
+Let users enter a city and get the current weather.
+Shows the weather clearly, with any details you think are useful.
+
+Extras (NOT required. But If You’re Up for It):
+Add a 5-day forecast.
+Let users see the weather based on their location.
+Use icons or images to make the weather info look cool.
+
+Again, use whatever technology stack you like!
+
+*********
+## Run Locally
 
 ### 1. Clone the project
 
@@ -38,7 +58,9 @@ On the info button there is a short description of PM Accelerator, you can find 
   virtualenv env
 ```
 
-### 5. Activating virtual environment
+
+### 5. Activating virtual environment\
+
 ``` bash
   source env/bin/activate 
 ```
@@ -49,7 +71,7 @@ On the info button there is a short description of PM Accelerator, you can find 
   pip install -r requirements.txt
 ```
 
-#### 7. Go to [OpenWeatherMap.org](https://openweathermap.org/api) and create an account to generate your own API Key. Once you copy your API Key rename both ".env.example" files to just ".env". then paste the API key and replace the text "paste your openweather api key here".
+#### 7. Go to [OpenWeatherMap.org](https://openweathermap.org/api) and create an account to generate your own API Key. Once you copy your API Key rename both ".env.example" files to just ".env". then paste the API key and replace the text "paste your openweather api key here."
 
 ## 8. Choose Flask or Tkinter Weather_App
 
@@ -64,6 +86,7 @@ On the info button there is a short description of PM Accelerator, you can find 
 ```bash
   python weather_app.py
 ```
+
 ## OR
 
 ### 9. Flask
@@ -77,8 +100,11 @@ On the info button there is a short description of PM Accelerator, you can find 
 ```bash
   python app.py
 ```
+
+*********
+
 ## Usage/Examples
 
 Below is a link to a short video explaining the process of creating this weather app as well as deployment and usage.  
 
-[Youtube Link](youtube.com)
+[Youtube Link](https://youtu.be/8jGxz7ASyd0)

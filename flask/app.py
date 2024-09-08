@@ -3,16 +3,16 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, abort
 import datetime
-
+from pathlib import Path
 
 app = Flask(__name__)
 
-# Load environment variables 
-load_dotenv()
+# Load environment variables
+env_path = Path('..') / '.env'
+load_dotenv(dotenv_path=env_path)
 
-# Retrieve the API 
+# Retrieve the API key from .env
 OPEN_WEATHER_API_KEY = os.getenv('OPEN_WEATHER_API_KEY')
-
 
 # Route the index.html file to the root URL
 @app.route('/', methods=['POST', 'GET'])
@@ -35,9 +35,9 @@ def weather():
         current_date = datetime.datetime.now()
 
         # forecast for each day
-        for i in range(0, 40, 8):  
+        for i in range(0, 40, 8):
             weather_data = data["list"][i]
-            
+
             # iterate through the next 5 days
             weather_forecast = {
                 "date": current_date.strftime('%A, %B %d'),
@@ -57,9 +57,8 @@ def weather():
             'index.html', forecast_data=forecast_data, city_name=city_name)
     else:
         # city not found or error with API
-        return abort(
-            404, description="City not found or error fetching weather data.")
+        return abort(404, description="City not found or error fetching weather data.")
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
