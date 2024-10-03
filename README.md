@@ -30,6 +30,11 @@ Let users see the weather based on their location.
 Use icons or images to make the weather info look cool.
 
 Again, use whatever technology stack you like!
+*********
+### Screenshot of Website
+
+![image](https://github.com/user-attachments/assets/9677be95-dc22-4c8c-9890-745a7fa8d332)
+
 
 *********
 ## Run Locally
