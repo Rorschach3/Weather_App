@@ -1,115 +1,135 @@
+<!-- Project Title -->
 
-## Project Description
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9677be95-dc22-4c8c-9890-745a7fa8d332" alt="Weather App Screenshot" width="600"/>
+</p>
 
-A basic Weather App created with two Python-based frameworks, Tkinter and Flask.
+# Weather App
 
-Tkinter is a standard GUI (Graphical User Interface) library in Python used for creating desktop applications. It provides a variety of widgets like buttons, labels, text boxes, and menus, allowing developers to design interactive and user-friendly interfaces.
+A dual-interface weather application built with **Python**, offering both a **Flask**-powered web UI and a **Tkinter** desktop GUI. It fetches real-time and forecast data from OpenWeatherMap’s API, displaying temperature, “feels like” values, highs/lows, and humidity. The Tkinter version shows a 3-day forecast; the Flask version extends to 5 days.
 
-Flask is a micro web framework in Python that is used to build web applications and APIs. It's lightweight and flexible, offering developers control over how they want to structure their applications. Flask supports extensions for database integration, form handling, authentication, and more, making it a popular choice for both simple and complex web projects.
+---
 
-This app uses OpenWeatherMap.org for retrieving real-time weather data based on user input.
+## Table of Contents
 
-Choose to either run the app using Flask or Tkinter. The user enters a city, and the app retrieves weather data using OpenWeatherMap's APIs. The information returned includes temperature, "feels like" temperature, high and low temperatures, and humidity. The Tkinter app retrieves a 3-day weather forecast, while the Flask app retrieves a 5-day weather forecast.
+1. [Features](#features)
+2. [Tech Stack](#tech-stack)
+3. [Live Demo & Screenshot](#live-demo--screenshot)
+4. [Installation](#installation)
+5. [Configuration](#configuration)
+6. [Running the App](#running-the-app)
 
-On the info button there is a short description of PM Accelerator, you can find more info on PM Accelerator on its Linkedin page:
+   * [Tkinter GUI](#tkinter-gui)
+   * [Flask Web App](#flask-web-app)
+7. [Usage](#usage)
+8. [Credits](#credits)
 
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/school/productmanagerinterview/about/)
-*********
+---
 
-#### Instructions: 
+## Features
 
-What We’re Looking For:
+* **City Search**: Enter any city to retrieve current weather.
+* **Detailed Metrics**: Displays temperature, “feels like,” high/low, humidity.
+* **3-Day vs. 5-Day Forecast**:
 
-Make a weather app that:
-Let users enter a city and get the current weather.
-Shows the weather clearly, with any details you think are useful.
+  * Tkinter GUI → 3-day forecast
+  * Flask Web UI → 5-day forecast
+* **Location Info**: (Optional) Can be extended to auto-detect user location.
+* **Extensible Design**: Icons, geolocation, and additional data layers easily integrated.
 
-Extras (NOT required. But If You’re Up for It):
-Add a 5-day forecast.
-Let users see the weather based on their location.
-Use icons or images to make the weather info look cool.
+---
 
-Again, use whatever technology stack you like!
-*********
-### Screenshot of Website
+## Tech Stack
 
-![image](https://github.com/user-attachments/assets/9677be95-dc22-4c8c-9890-745a7fa8d332)
+| Component        | Framework / Library |
+| ---------------- | ------------------- |
+| Web Framework    | Flask               |
+| Desktop GUI      | Tkinter             |
+| HTTP Requests    | `requests`          |
+| Environment Vars | `python-dotenv`     |
+| API              | OpenWeatherMap      |
+| Language         | Python 3.x          |
 
+---
 
-*********
-## Run Locally
+## Live Demo & Screenshot
 
-### 1. Clone the project
+Watch the usage video and deployment walkthrough:
 
-```bash
-  git clone https://github.com/Rorschach3/Weather_App.git
-```
+[▶ View on YouTube](https://youtu.be/8jGxz7ASyd0)
 
-### 2. Go to the project directory
+**Web UI Screenshot**
 
-```bash
-  cd Weather_App
-```
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9677be95-dc22-4c8c-9890-745a7fa8d332" alt="Weather App Screenshot" width="600"/>
+</p>
 
-### 3. Install VirtualEnv
+---
 
-```bash
-  pip install virtualenv
-```
-
-### 4. creating virtualenv
-
-```bash
-  virtualenv env
-```
-
-
-### 5. Activating virtual environment\
-
-``` bash
-  source env/bin/activate 
-```
-
-### 6. Install requirements
+## Installation
 
 ```bash
-  pip install -r requirements.txt
+# 1. Clone the repo
+git clone https://github.com/Rorschach3/Weather_App.git
+cd Weather_App
+
+# 2. (Optional) Create virtual environment
+python3 -m venv env
+source env/bin/activate    # Windows: env\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
 ```
 
-#### 7. Go to [OpenWeatherMap.org](https://openweathermap.org/api) and create an account to generate your own API Key. Once you copy your API Key rename both ".env.example" files to just ".env". then paste the API key and replace the text "paste your openweather api key here."
+---
 
-## 8. Choose Flask or Tkinter Weather_App
+## Configuration
 
-### 9. Tkinter
+1. Sign up at [OpenWeatherMap.org](https://openweathermap.org/api).
+2. Copy your **API Key**.
+3. Rename both `.env.example` files (in the root, `flask/`, and `tkinter/` folders) to `.env`.
+4. Inside each `.env`, replace:
+
+   ```
+   OPENWEATHER_API_KEY="paste your openweather api key here"
+   ```
+
+---
+
+## Running the App
+
+Choose your preferred interface:
+
+### Tkinter GUI
 
 ```bash
-  cd tikinter
+cd tkinter
+python weather_app.py
 ```
 
-### 10. Run the Weather_App
+### Flask Web App
 
 ```bash
-  python weather_app.py
+cd flask
+python app.py
 ```
 
-## OR
+Open the Flask UI at [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
-### 9. Flask
+---
 
-```bash
-  cd flask
-```
+## Usage
 
-### 10. Run the App
+1. Launch the chosen interface.
+2. Enter a **city name** in the input field.
+3. Submit to view current conditions and forecast.
+4. (Tkinter) Browse the 3-day forecast.
+5. (Flask) Navigate the 5-day forecast cards.
 
-```bash
-  python app.py
-```
+---
 
-*********
+## Credits
 
-## Usage/Examples
-
-Below is a link to a short video explaining the process of creating this weather app as well as deployment and usage.  
-
-[Youtube Link](https://youtu.be/8jGxz7ASyd0)
+* Developed by **Daniel Hernandez**
+* Based on requirements from PM Accelerator:
+  [![LinkedIn](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge\&logo=linkedin\&logoColor=white)](https://www.linkedin.com/school/productmanagerinterview/about/)
